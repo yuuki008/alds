@@ -8,6 +8,11 @@ void printArray(vector<int> A) {
   cout << endl;
 };
 
+/* PreOrder (先行順巡回) と InOrder (中間順巡回) から PostOrder (後行順巡回) を生成する */
+/* 解法: */
+/*   1. PreOrder の最初の要素は root であることを利用する */
+/*   2. InOrder の中から root を見つけ、左部分木と右部分木に分ける */
+/*   3. 再起的に同じ操作を繰り返し、部分木毎に PostOrder の順序を求める */
 vector<int> buildPostOrder(vector<int> preOrder, vector<int> inOrder) {
   if (inOrder.size() == 0 || preOrder.size() == 0) return vector<int>{};
 
@@ -24,6 +29,7 @@ vector<int> buildPostOrder(vector<int> preOrder, vector<int> inOrder) {
   vector<int> leftPostOrder = buildPostOrder(leftPreOrder, leftInOrder);
   vector<int> rightPostOrder = buildPostOrder(rightPreOrder, rightInOrder);
 
+  // postOrder = leftPostOrder + rightPostOrder + [root]
   vector<int> postOrder;
   postOrder.insert(postOrder.end(), leftPostOrder.begin(), leftPostOrder.end());
   postOrder.insert(postOrder.end(), rightPostOrder.begin(), rightPostOrder.end());

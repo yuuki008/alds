@@ -27,7 +27,7 @@ using namespace std;
 
 int dfs(int key, int time, vector<vector<int>> A, vector<int> &d,
         vector<int> &h) {
-  if (h[key] != -1  || d[key] != -1) return time;
+  if (d[key] != -1) return time;
 
   time++;
   d[key] = time;

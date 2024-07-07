@@ -39,7 +39,9 @@
 3. 全ての頂点が連結されるまで繰り返す
 
 ### データ構造
+
 Union-Find
+https://www.youtube.com/watch?v=Nma9Nx47FqE
 
 ### 計算量
 

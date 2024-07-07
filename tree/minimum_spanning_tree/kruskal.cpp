@@ -46,10 +46,12 @@ struct UnionFind {
 };
 
 int kruskal(int n, vector<Edge>& edges) {
+  /* 1. エッジを昇順にソート */
   sort(edges.begin(), edges.end());
   UnionFind uf(n);
   int mst_weight = 0;
 
+  /* 2. 重みが小さい順にエッジを選び、サイクルが形成されない様にエッジを追加 */
   for (const auto& edge : edges) {
     if (uf.find(edge.u) != uf.find(edge.v)) {
       uf.unite(edge.u, edge.v);
